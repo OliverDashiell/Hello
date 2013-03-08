@@ -1,6 +1,5 @@
 package client;
 
-import java.awt.EventQueue;
 import java.io.BufferedInputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;

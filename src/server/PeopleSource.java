@@ -1,8 +1,6 @@
 package server;
 
 import java.util.ArrayList;
-import java.util.Observer;
-
 import model.Person;
 
 public interface PeopleSource extends Connectable {

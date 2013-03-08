@@ -1,7 +1,5 @@
 package protocol;
 
-import java.io.Serializable;
-
 import model.Person;
 
 import server.PeopleSource;
@@ -9,7 +7,6 @@ import server.PeopleSource;
 public class InsertPerson extends BaseRequest {
 
 	private String name;
-	private String error;
 	private Long result;
 	private Person person;
 	
@@ -45,10 +42,6 @@ public class InsertPerson extends BaseRequest {
 
 	public Object getResult() {
 		return this.result;
-	}
-
-	public String getError() {
-		return this.error;
 	}
 
 	public boolean shouldBroadcast() {

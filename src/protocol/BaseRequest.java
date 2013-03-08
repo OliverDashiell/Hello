@@ -6,6 +6,7 @@ public abstract class BaseRequest implements Request, Serializable {
 
 	private int requestId;
 	private int clientId;
+	protected String error;
 
 	public void setRequestId(int value) {
 		this.requestId = value;
@@ -21,5 +22,13 @@ public abstract class BaseRequest implements Request, Serializable {
 
 	public int getClientId() {
 		return clientId;
+	}
+
+	public String getError() {
+		return error;
+	}
+
+	public void setError(String error) {
+		this.error = error;
 	}
 }

@@ -1,15 +1,11 @@
 package protocol;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-
 import model.Person;
 
 import server.PeopleSource;
 
 public class DeletePerson extends BaseRequest {
 
-	private String error;
 	private Person person;
 
 	public DeletePerson(Person person) {
@@ -36,11 +32,6 @@ public class DeletePerson extends BaseRequest {
 	public Object getResult() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	public String getError() {
-		// TODO Auto-generated method stub
-		return this.error;
 	}
 
 	public boolean shouldBroadcast() {

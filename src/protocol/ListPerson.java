@@ -1,7 +1,5 @@
 package protocol;
 
-import java.io.Serializable;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import server.PeopleSource;
@@ -10,7 +8,6 @@ import server.PeopleSource;
 public class ListPerson extends BaseRequest {
 
 	private ArrayList result;
-	private String error;
 	
 	public ListPerson(){
 		
@@ -31,14 +28,6 @@ public class ListPerson extends BaseRequest {
 
 	public Object getResult() {
 		return result;
-	}
-
-	public void setError(String error) {
-		this.error = error;
-	}
-
-	public String getError() {
-		return error;
 	}
 
 	public boolean shouldBroadcast() {

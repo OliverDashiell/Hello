@@ -1,14 +1,11 @@
 package protocol;
 
-import java.io.Serializable;
-
 import model.Person;
 import server.PeopleSource;
 
 public class UpdatePerson extends BaseRequest {
 
 	private Person person;
-	private String error;
 	
 	public UpdatePerson(Person person) {
 		this.person = person;
@@ -33,10 +30,6 @@ public class UpdatePerson extends BaseRequest {
 
 	public Object getResult() {
 		return null;
-	}
-
-	public String getError() {
-		return this.error;
 	}
 
 	public boolean shouldBroadcast() {

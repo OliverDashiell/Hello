@@ -1,7 +1,5 @@
 package client;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import protocol.DeletePerson;
 import protocol.GetPerson;
 import protocol.InsertPerson;

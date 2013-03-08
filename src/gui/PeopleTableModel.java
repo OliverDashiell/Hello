@@ -1,7 +1,5 @@
 package gui;
 
-/*   Class Imports   */
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Observable;
@@ -16,8 +14,6 @@ import protocol.UpdatePerson;
 import client.PeopleAsyncSource;
 import client.ResponseHandler;
 
-import server.PeopleDataSource;
-import server.PeopleSource;
 import model.Person;
 
 

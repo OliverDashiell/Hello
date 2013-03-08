@@ -13,12 +13,7 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
 import javax.swing.JButton;
-
-import archive.PeopleClient;
-
 import client.PeopleAsyncSource;
-import server.PeopleDataSource;
-import server.PeopleSource;
 
 public class MainFrame extends JFrame {
 	

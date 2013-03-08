@@ -22,7 +22,7 @@ public class SwingPeopleAsyncSource extends PeopleAsyncSource {
 	}
 
 	protected void swingChanged(Object arg1) {
-		super.changed();
+		super.changed(arg1);
 	}
 	
 	protected void handleResponse(final Request response, Integer key) {

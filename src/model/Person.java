@@ -1,12 +1,9 @@
 package model;
 
-import java.io.Serializable;
-
-public class Person implements Serializable {
+public class Person extends PersistantObject {
 	
 	/*   Class Variables   */
 	private String name;
-	private long id;
 	
 	/*    Class Methods    */
 	// Default Constructor
@@ -25,16 +22,6 @@ public class Person implements Serializable {
 	public Person(String name) {
 		this.name = name;
 		this.id = 0;
-	}
-	
-	// Setter for id variable
-	public void setId(long id) {
-		this.id = id;
-	}
-	
-	// Getter for id variable
-	public long getId() {
-		return id;
 	}
 	
 	// Setter for name variable
