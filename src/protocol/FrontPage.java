@@ -10,9 +10,10 @@ public class FrontPage extends BaseRequest {
 	private ArrayList events;
 	private boolean shouldBroadcast;
 	
+	
 	public void handleRequest(PeopleSource dataSource) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	public Object getResult() {

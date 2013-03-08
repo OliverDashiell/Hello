@@ -6,7 +6,7 @@ public class Artist extends PersistantObject {
 
 	ArrayList<Genre> genres;
 	String name;
-	String description;
+	String bio;
 	
 	public Artist(String name)
 	{
@@ -23,12 +23,12 @@ public class Artist extends PersistantObject {
 		this.name = groupName;
 	}
 	
-	public String getDescription() {
-		return description;
+	public String getBio() {
+		return bio;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setBio(String bio) {
+		this.bio = bio;
 	}
 	
     public void addGenre(Genre genre)
