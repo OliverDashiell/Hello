@@ -16,7 +16,7 @@ import protocol.UpdatePerson;
 import client.PeopleAsyncSource;
 import client.ResponseHandler;
 
-import server.ObjectSource;
+import server.PeopleDataSource;
 import server.PeopleSource;
 import model.Person;
 

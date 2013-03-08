@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 import model.Person;
 
-public class ObjectSource extends Observable implements PeopleSource {
+public class PeopleDataSource extends Observable implements PeopleSource {
 	
 	/*   Class Variables   */
 	private String url;				// URL for the database
@@ -21,14 +21,14 @@ public class ObjectSource extends Observable implements PeopleSource {
 	
 	/*    Class Methods    */
 	// Default constructor
-	public ObjectSource(String url, String username, String password) {
+	public PeopleDataSource(String url, String username, String password) {
 		super();
 		this.url = url;
 		this.username = username;
 		this.password = password;
 	}
 	
-	public ObjectSource(Connection connection) {
+	public PeopleDataSource(Connection connection) {
 		super();
 		this.connection = connection;
 	}

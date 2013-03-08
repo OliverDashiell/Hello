@@ -1,6 +1,8 @@
-package protocol;
+package archive;
 
 import java.io.Serializable;
+
+import protocol.BaseRequest;
 
 import server.PeopleSource;
 

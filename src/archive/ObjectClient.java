@@ -1,10 +1,9 @@
-package client;
+package archive;
 
 import java.io.*;
 import java.net.*;
 import java.util.Iterator;
 
-import protocol.Echo;
 import protocol.ListPerson;
 import java.util.ArrayList;
 

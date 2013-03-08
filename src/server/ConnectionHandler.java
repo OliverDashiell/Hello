@@ -47,7 +47,7 @@ public class ConnectionHandler extends Observable implements Runnable {
 				if(request != null){
 					System.out.println("Message received.");
 					
-					ObjectSource objectSource = new ObjectSource(this.dataSource.getConnection());
+					PeopleDataSource objectSource = new PeopleDataSource(this.dataSource.getConnection());
 					
 					request.handleRequest(objectSource);
 					objectSource.disconnect();
