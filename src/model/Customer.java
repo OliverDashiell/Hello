@@ -9,7 +9,7 @@ import java.util.Date;
 public class Customer extends PersistantObject {
     
     private Account account;
-	private ArrayList<Booking> bookings = null;
+	private ArrayList<Booking> bookings;
     private String title;
     private String forename;
     private String surname;
@@ -34,6 +34,7 @@ public class Customer extends PersistantObject {
         this.town = "";
         this.county = "";
         this.created = null;
+        bookings = new ArrayList<Booking>();
     }
 
     public Customer(String email, String password, String title, String forename, String surname, String telephone, String mobile, String addr1, String addr2, String town, String county) 

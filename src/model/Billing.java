@@ -5,21 +5,38 @@ package model;
  */
 public class Billing extends PersistantObject {
 	
-	Artist billing;
+	Artist artist;
+	Event event;
 	int lineupOrder;
 	
-	public Billing(Artist artist)
+	public Billing(long id, Artist artist, Event event, int lineupOrder)
 	{
-		this.billing = artist;
+		this.id = id;
+		this.artist = artist;
+		this.event = event;
+		this.lineupOrder = lineupOrder;
 	}
 	
-	public Artist getBilling() {
-		return billing;
+
+	public Artist getArtist() {
+		return artist;
 	}
 
-	public void setBilling(Artist artist) {
-		this.billing = artist;
+
+	public void setArtist(Artist artist) {
+		this.artist = artist;
 	}
+
+
+	public Event getEvent() {
+		return event;
+	}
+
+
+	public void setEvent(Event event) {
+		this.event = event;
+	}
+
 
 	public int getLineupOrder() {
 		return lineupOrder;

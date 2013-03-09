@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 import protocol.DeletePerson;
+import protocol.FrontPage;
 import protocol.GetPerson;
 import protocol.InsertPerson;
 import protocol.ListPerson;
@@ -81,5 +82,11 @@ public class PeopleClient extends Observable implements PeopleSource {
 			throw new Exception(response.getError());
 		}
 		return response;
+	}
+
+	public ArrayList getFrontPage() throws Exception {
+		out.writeObject(new FrontPage());
+		FrontPage response = (FrontPage)handleResponse();
+		return response.getArtists();
 	}
 }

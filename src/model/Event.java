@@ -1,29 +1,25 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.Date;
 
 public class Event extends PersistantObject {
 	
 	ArrayList<Billing> billings;
 	String name;
-	Calendar startTime;
-	Calendar endTime;
+	Date startTime;
+	Date endTime;
 	SeatingPlan seatingPlan;
 	
-	public Event(String name, Calendar startTime, Calendar endTime)
+	public Event(long id, String name, Date startTime, Date endTime)
 	{
+		this.id = id;
 		this.name = name;
 		this.startTime = startTime;
 		this.endTime = endTime;
-	}
-	
-	public Event(ArrayList<Billing> billings, String name, Calendar startTime, Calendar endTime)
-	{
-		this.billings = billings;
-		this.name = name;
-		this.startTime = startTime;
-		this.endTime = endTime;
+		this.billings = new ArrayList<Billing>();
+		this.seatingPlan = null;
+		
 	}
 
 	public ArrayList<Billing> getBillings() 
@@ -46,22 +42,22 @@ public class Event extends PersistantObject {
 		this.name = name;
 	}
 
-	public Calendar getStartTime() 
+	public Date getStartTime() 
 	{
 		return startTime;
 	}
 
-	public void setStartTime(Calendar startTime) 
+	public void setStartTime(Date startTime) 
 	{
 		this.startTime = startTime;
 	}
 
-	public Calendar getEndTime() 
+	public Date getEndTime() 
 	{
 		return endTime;
 	}
 
-	public void setEndTime(Calendar endTime) 
+	public void setEndTime(Date endTime) 
 	{
 		this.endTime = endTime;
 	}
@@ -73,4 +69,12 @@ public class Event extends PersistantObject {
 	public void setSeatingPlan(SeatingPlan seatingPlan) {
 		this.seatingPlan = seatingPlan;
 	}
+	
+    public void addBilling(Billing billing) {
+    	this.billings.add(billing);
+    }
+    
+    public void removeBilling(Billing billing) {
+    	this.billings.remove(billing);
+    }
 }

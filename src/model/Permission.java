@@ -19,11 +19,6 @@ public class Permission extends PersistantObject {
 	
 	public void addAccount(Account account)
 	{
-		if (accounts == null)
-		{
-			accounts = new ArrayList<Account>();
-		}
-		
 		accounts.add(account);
 	}
 	

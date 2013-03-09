@@ -8,8 +8,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Observable;
+
+import model.Artist;
+import model.Billing;
+import model.Event;
 import model.Person;
+import model.Tour;
+import model.Venue;
 
 public class PeopleDataSource extends Observable implements PeopleSource {
 	
@@ -18,6 +25,9 @@ public class PeopleDataSource extends Observable implements PeopleSource {
 	private String username;		// UserName for database account
 	private String password;		// Password for database account
 	private Connection connection;	// Connection to the database
+	private static String eventQuery = "select e.id as event_id, e.name as event_name, e.start_time, e.end_time, b.id as billing_id, b.artist_id as artist_id, b.lineup_order, v.id as venue_id, v.name as venue_name, t.id as tour_id, t.name as tour_name from event e join seating_plan sp on e.seating_plan_id = sp.id join venue v on sp.venue_id = v.id join billing b on b.event_id = e.id left outer join tour t on b.tour_id = t.id;";
+	private static String artistQuery = "select a.*, GROUP_CONCAT(g.name) as genres from artist a join artist_genres_genre agg on agg.genres_id = a.id join genre g on agg.genre_id = g.id group by a.id;";
+
 	
 	/*    Class Methods    */
 	// Default constructor
@@ -148,5 +158,79 @@ public class PeopleDataSource extends Observable implements PeopleSource {
 		setChanged();
 		notifyObservers();
 		clearChanged();
+	}
+
+	public ArrayList getFrontPage() throws Exception {
+		ArrayList result = new ArrayList();
+		HashMap<Long, Artist> artists = new HashMap<Long, Artist>();
+		HashMap<Long, Event> events = new HashMap<Long, Event>();
+		HashMap<Long, Venue> venues = new HashMap<Long, Venue>();
+		HashMap<Long, Tour> tours = new HashMap<Long, Tour>();
+		Artist a = null;
+		
+		PreparedStatement stmt = this.connection.prepareStatement(artistQuery);
+		
+		ResultSet rs = stmt.executeQuery();
+		
+		while (rs.next()){
+			a = new Artist(rs.getLong("id"), 
+									rs.getString("name"), 
+									rs.getString("bio"), 
+									rs.getString("genres"));
+			result.add(a);
+			artists.put(new Long(a.getId()), a);
+		}
+		
+		rs.close();
+		stmt.close();
+		
+		stmt = this.connection.prepareStatement(eventQuery);
+		
+		rs = stmt.executeQuery();
+		
+		while (rs.next()){
+			Venue v = venues.get(new Long(rs.getLong("venue_id")));
+			if(v == null) {
+				v = new Venue(rs.getLong("venue_id"), 
+								rs.getString("venue_name"));
+				venues.put(new Long(v.getId()), v);
+			}
+			
+			Event e = events.get(new Long(rs.getLong("event_id")));
+			if(e == null) {
+				e = new Event(rs.getLong("event_id"), 
+								rs.getString("event_name"), 
+								rs.getDate("start_time"),
+								rs.getDate("end_time"));
+				events.put(new Long(e.getId()), e);
+				v.addEvent(e);
+			}
+			
+			a = artists.get(new Long(rs.getLong("artist_id")));
+			
+			if(rs.getLong("tour_id") != 0){
+				Tour t = tours.get(new Long(rs.getLong("tour_id")));
+				if(t == null) {
+					t = new Tour(rs.getLong("tour_id"), 
+									rs.getString("tour_name"), 
+									a);
+					tours.put(new Long(t.getId()), t);
+					a.addTour(t);
+				}
+			}
+			
+			Billing b = new Billing(rs.getLong("billing_id"), 
+												a,
+												e,
+												rs.getInt("lineup_order"));
+			
+			a.addBilling(b);
+			e.addBilling(b);
+		}
+		
+		rs.close();
+		stmt.close();
+		
+		return result;
 	}
 }

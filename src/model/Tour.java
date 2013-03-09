@@ -11,15 +11,10 @@ public class Tour extends PersistantObject {
 	String name;
 	Artist artist;
 	
-	public Tour(String name)
+	public Tour(long id, String name, Artist artist)
 	{
 		bills = new ArrayList<Billing>();
-		this.name = name;
-	}
-	
-	public Tour(String name, Artist artist)
-	{
-		bills = new ArrayList<Billing>();
+		this.id = id;
 		this.name = name;
 		this.artist = artist;
 	}

@@ -10,11 +10,13 @@ public class Venue extends PersistantObject {
 	String name;
 	double geoLat;
 	double geoLong;
+	//TODO add postcode data member with getters and setters
 
-	public Venue(String name)
+	public Venue(long id, String name)
 	{
 		this.events = new ArrayList<Event>();
 		this.name = name;
+		this.id = id;
 		this.geoLat = 0;
 		this.geoLong = 0;
 	}

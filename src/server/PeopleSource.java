@@ -19,5 +19,7 @@ public interface PeopleSource extends Connectable {
 
 	// Get all people
 	public abstract ArrayList listPersons() throws Exception;
+	
+	public abstract ArrayList getFrontPage() throws Exception;
 
 }
