@@ -1,4 +1,6 @@
-package model;
+package archive;
+
+import com.prcse.datamodel.PersistantObject;
 
 public class Person extends PersistantObject {
 	

@@ -8,8 +8,9 @@ import protocol.FrontPage;
 import protocol.ListPerson;
 import java.util.ArrayList;
 
-import model.Artist;
-import model.Billing;
+import com.prcse.datamodel.Artist;
+import com.prcse.datamodel.Billing;
+
 
 public class ObjectClient {
     public static void main(String[] args) throws IOException {
@@ -63,7 +64,7 @@ public class ObjectClient {
 				e.printStackTrace();
 			}
 		}
-		else if(userInput.startsWith("front page")) {
+		else if(userInput.startsWith("artists")) {
 			out.writeObject(new FrontPage());
 			try {
 				FrontPage response = (FrontPage)in.readObject();
@@ -73,14 +74,37 @@ public class ObjectClient {
 				else {
 					for(Iterator i = response.getArtists().iterator(); i.hasNext();) {
 						Artist a = (Artist)i.next();
-						System.out.println(a.getName() + "[" + a.getId() + "]");
-						System.out.println("\t" + a.getBio());
-						System.out.println("\t" + a.getGenres().toString());
-						for(Iterator bs = a.getBillings().iterator(); bs.hasNext();) {
-							Billing b = (Billing)bs.next();
-							System.out.println("\t" + b.getEvent().getName());
-							//System.out.println("\t\t" + b.getEvent().getVenue().getName());
-						}
+						System.out.println(a.getName() + " [" + a.getId() + "]");
+					}
+				}
+			}
+			catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else if(userInput.startsWith("show")) {
+			out.writeObject(new FrontPage());
+			try {
+				FrontPage response = (FrontPage)in.readObject();
+				if(response.getError() != null) {
+					System.out.println(response.getError());
+				}
+				else {
+					for(Iterator i = response.getArtists().iterator(); i.hasNext();) {
+						Artist a = (Artist)i.next();
+						if(userInput.startsWith("show " + a.getName())) {
+							System.out.println(a.getName() + " [" + a.getId() + "]");
+							System.out.println("\t" + a.getBio());
+							System.out.println("\t" + a.getGenres().toString());
+							for(Iterator bs = a.getBillings().iterator(); bs.hasNext();) {
+								Billing b = (Billing)bs.next();
+								System.out.println("\t" + b.getEvent().getName());
+								System.out.println("\t\t" + 
+													b.getEvent().getSeatingPlan().getVenue().getName() + 
+													" - " + b.getEvent().getSeatingPlan().getName());
+							}
+						} 
 					}
 				}
 			}

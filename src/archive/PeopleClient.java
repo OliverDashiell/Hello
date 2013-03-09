@@ -15,7 +15,6 @@ import protocol.ListPerson;
 import protocol.Request;
 import protocol.UpdatePerson;
 
-import model.Person;
 import server.PeopleSource;
 
 public class PeopleClient extends Observable implements PeopleSource {

@@ -2,7 +2,6 @@ package archive;
 
 import java.util.Date;
 
-import model.Person;
 
 public class Control {
 	public Person login(String email, String password){

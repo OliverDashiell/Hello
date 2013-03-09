@@ -1,6 +1,6 @@
 package protocol;
 
-import model.Person;
+import archive.Person;
 
 import server.PeopleSource;
 

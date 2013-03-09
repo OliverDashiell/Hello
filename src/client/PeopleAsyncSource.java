@@ -1,12 +1,12 @@
 package client;
 
+import archive.Person;
 import protocol.DeletePerson;
 import protocol.GetPerson;
 import protocol.InsertPerson;
 import protocol.ListPerson;
 import protocol.Request;
 import protocol.UpdatePerson;
-import model.Person;
 
 public class PeopleAsyncSource extends AsyncSource {
 	

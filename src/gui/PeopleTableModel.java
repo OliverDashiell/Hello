@@ -6,6 +6,8 @@ import java.util.Observable;
 import java.util.Observer;
 import javax.swing.table.AbstractTableModel;
 
+import archive.Person;
+
 import protocol.DeletePerson;
 import protocol.InsertPerson;
 import protocol.Request;
@@ -14,7 +16,6 @@ import protocol.UpdatePerson;
 import client.PeopleAsyncSource;
 import client.ResponseHandler;
 
-import model.Person;
 
 
 public class PeopleTableModel extends AbstractTableModel implements Observer {

@@ -1,8 +1,8 @@
 package protocol;
 
+import archive.Person;
 import server.PeopleSource;
 
-import model.Person;
 
 public class GetPerson extends BaseRequest {
 
