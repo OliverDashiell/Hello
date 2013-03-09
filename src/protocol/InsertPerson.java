@@ -1,5 +1,8 @@
 package protocol;
 
+import com.prcse.protocol.BaseRequest;
+import com.prcse.utils.Connectable;
+
 import archive.Person;
 
 import server.PeopleSource;
@@ -30,9 +33,9 @@ public class InsertPerson extends BaseRequest {
 		this.name = name;
 	}
 
-	public void handleRequest(PeopleSource dataSource) {
+	public void handleRequest(Connectable dataSource) {
 		try {
-			this.result = dataSource.insertPerson(name);
+			this.result = ((PeopleSource)dataSource).insertPerson(name);
 			this.person = new Person(name, result.longValue());
 		} catch (Exception e) {
 			e.printStackTrace();

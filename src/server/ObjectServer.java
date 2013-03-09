@@ -10,8 +10,8 @@ import java.util.Observable;
 import java.util.Observer;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource;
+import com.prcse.protocol.Request;
 
-import protocol.Request;
 
 public class ObjectServer {
 	private ServerSocket servSock;

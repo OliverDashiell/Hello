@@ -2,9 +2,12 @@ package server;
 
 import java.util.ArrayList;
 
+import com.prcse.utils.Connectable;
+import com.prcse.utils.PrcseSource;
+
 import archive.Person;
 
-public interface PeopleSource extends Connectable {
+public interface PeopleSource extends PrcseSource {
 
 	// Insert a person
 	public abstract Long insertPerson(String name) throws Exception;
@@ -20,7 +23,5 @@ public interface PeopleSource extends Connectable {
 
 	// Get all people
 	public abstract ArrayList listPersons() throws Exception;
-	
-	public abstract ArrayList getFrontPage() throws Exception;
 
 }

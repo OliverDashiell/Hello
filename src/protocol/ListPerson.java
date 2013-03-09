@@ -2,6 +2,9 @@ package protocol;
 
 import java.util.ArrayList;
 
+import com.prcse.protocol.BaseRequest;
+import com.prcse.utils.Connectable;
+
 import server.PeopleSource;
 
 
@@ -13,9 +16,9 @@ public class ListPerson extends BaseRequest {
 		
 	}
 	
-	public void handleRequest(PeopleSource dataSource) {
+	public void handleRequest(Connectable dataSource) {
 		try {
-			this.setResult(dataSource.listPersons());
+			this.setResult(((PeopleSource)dataSource).listPersons());
 		} catch (Exception e) {
 			e.printStackTrace();
 			this.error = e.getMessage();

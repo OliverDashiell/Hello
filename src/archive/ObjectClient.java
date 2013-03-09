@@ -4,12 +4,12 @@ import java.io.*;
 import java.net.*;
 import java.util.Iterator;
 
-import protocol.FrontPage;
 import protocol.ListPerson;
 import java.util.ArrayList;
 
 import com.prcse.datamodel.Artist;
 import com.prcse.datamodel.Billing;
+import com.prcse.protocol.FrontPage;
 
 
 public class ObjectClient {

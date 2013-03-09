@@ -7,12 +7,13 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Observable;
 
+import com.prcse.protocol.FrontPage;
+import com.prcse.protocol.Request;
+
 import protocol.DeletePerson;
-import protocol.FrontPage;
 import protocol.GetPerson;
 import protocol.InsertPerson;
 import protocol.ListPerson;
-import protocol.Request;
 import protocol.UpdatePerson;
 
 import server.PeopleSource;

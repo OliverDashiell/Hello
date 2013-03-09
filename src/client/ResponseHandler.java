@@ -1,6 +1,6 @@
 package client;
 
-import protocol.Request;
+import com.prcse.protocol.Request;
 
 public interface ResponseHandler {
 	

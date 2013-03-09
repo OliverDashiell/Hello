@@ -8,9 +8,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Observable;
 
-import protocol.Request;
+import com.prcse.protocol.Request;
+import com.prcse.utils.Connectable;
 
-import server.Connectable;
+
 
 public class AsyncSource extends Observable implements Connectable, Runnable {
 

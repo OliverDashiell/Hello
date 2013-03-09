@@ -1,5 +1,8 @@
 package protocol;
 
+import com.prcse.protocol.BaseRequest;
+import com.prcse.utils.Connectable;
+
 import archive.Person;
 import server.PeopleSource;
 
@@ -13,9 +16,9 @@ public class GetPerson extends BaseRequest {
 		this.id = id;
 	}
 
-	public void handleRequest(PeopleSource dataSource) {
+	public void handleRequest(Connectable dataSource) {
 		try {
-			this.setResult(dataSource.getPerson(this.getId()));
+			this.setResult(((PeopleSource)dataSource).getPerson(this.getId()));
 		} catch (Exception e) {
 			e.printStackTrace();
 			this.error = e.getMessage();

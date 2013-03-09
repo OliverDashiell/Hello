@@ -12,7 +12,8 @@ import java.util.Observable;
 
 import javax.sql.DataSource;
 
-import protocol.Request;
+import com.prcse.protocol.Request;
+
 
 public class ConnectionHandler extends Observable implements Runnable {
 	

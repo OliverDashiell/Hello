@@ -2,10 +2,8 @@ package archive;
 
 import java.io.Serializable;
 
-import protocol.BaseRequest;
-
-import server.PeopleSource;
-
+import com.prcse.protocol.BaseRequest;
+import com.prcse.utils.Connectable;
 
 public class Echo extends BaseRequest {
 	
@@ -23,7 +21,7 @@ public class Echo extends BaseRequest {
 		return message;
 	}
 
-	public void handleRequest(PeopleSource dataSource) {
+	public void handleRequest(Connectable dataSource) {
 		// Do nothing
 	}
 	

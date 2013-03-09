@@ -2,10 +2,11 @@ package gui;
 
 import java.awt.EventQueue;
 
+import com.prcse.protocol.Request;
+
 import client.PeopleAsyncSource;
 import client.ResponseHandler;
 
-import protocol.Request;
 
 public class SwingPeopleAsyncSource extends PeopleAsyncSource {
 

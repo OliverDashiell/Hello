@@ -1,11 +1,12 @@
 package client;
 
+import com.prcse.protocol.Request;
+
 import archive.Person;
 import protocol.DeletePerson;
 import protocol.GetPerson;
 import protocol.InsertPerson;
 import protocol.ListPerson;
-import protocol.Request;
 import protocol.UpdatePerson;
 
 public class PeopleAsyncSource extends AsyncSource {

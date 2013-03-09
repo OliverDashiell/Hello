@@ -1,5 +1,8 @@
 package protocol;
 
+import com.prcse.protocol.BaseRequest;
+import com.prcse.utils.Connectable;
+
 import archive.Person;
 
 import server.PeopleSource;
@@ -12,9 +15,9 @@ public class DeletePerson extends BaseRequest {
 		this.person = person;
 	}
 
-	public void handleRequest(PeopleSource dataSource) {
+	public void handleRequest(Connectable dataSource) {
 		try {
-			dataSource.deletePerson(person);
+			((PeopleSource)dataSource).deletePerson(person);
 		} catch (Exception e) {
 			e.printStackTrace();
 			this.error = e.getMessage();

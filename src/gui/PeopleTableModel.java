@@ -6,11 +6,12 @@ import java.util.Observable;
 import java.util.Observer;
 import javax.swing.table.AbstractTableModel;
 
+import com.prcse.protocol.Request;
+
 import archive.Person;
 
 import protocol.DeletePerson;
 import protocol.InsertPerson;
-import protocol.Request;
 import protocol.UpdatePerson;
 
 import client.PeopleAsyncSource;
