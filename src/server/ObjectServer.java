@@ -16,7 +16,7 @@ import com.prcse.protocol.Request;
 public class ObjectServer {
 	private ServerSocket servSock;
 	private MysqlConnectionPoolDataSource dataSource;
-	private String url = "jdbc:mysql://localhost:8889/test";
+	private String url = "jdbc:mysql://127.0.0.1:8889/test";
 	private final int PORT = 1234;
 	private ArrayList handlers;
 
