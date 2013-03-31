@@ -180,7 +180,9 @@ public class PeopleDataSource extends Observable implements PeopleSource {
 			a = new Artist(rs.getLong("id"), 
 									rs.getString("name"), 
 									rs.getString("bio"), 
-									rs.getString("genres"));
+									rs.getString("genres"),
+									rs.getString("thumb_image"),
+									rs.getString("header_image"));
 			result.add(a);
 			artists.put(new Long(a.getId()), a);
 		}
