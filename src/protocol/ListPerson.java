@@ -37,5 +37,11 @@ public class ListPerson extends BaseRequest {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public boolean shouldSync() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 }

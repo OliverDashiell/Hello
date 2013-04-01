@@ -39,4 +39,10 @@ public class UpdatePerson extends BaseRequest {
 		return true;
 	}
 
+	@Override
+	public boolean shouldSync() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

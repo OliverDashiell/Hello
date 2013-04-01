@@ -1,12 +1,9 @@
 package server;
 
-/*   Class Imports   */
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Observable;
@@ -17,11 +14,9 @@ import com.prcse.datamodel.Event;
 import com.prcse.datamodel.SeatingPlan;
 import com.prcse.datamodel.Tour;
 import com.prcse.datamodel.Venue;
+import com.prcse.utils.PrcseSource;
 
-import archive.Person;
-
-
-public class PeopleDataSource extends Observable implements PeopleSource {
+public class PrcseDataSource extends Observable implements PrcseSource {
 	
 	/*   Class Variables   */
 	private String url;				// URL for the database
@@ -31,126 +26,34 @@ public class PeopleDataSource extends Observable implements PeopleSource {
 	private static String eventQuery = "select e.id as event_id, e.name as event_name, e.start_time, e.end_time, b.id as billing_id, b.artist_id as artist_id, b.lineup_order, v.id as venue_id, v.name as venue_name, t.id as tour_id, t.name as tour_name, sp.id as seating_plan_id, sp.name as seating_plan_name from event e join seating_plan sp on e.seating_plan_id = sp.id join venue v on sp.venue_id = v.id join billing b on b.event_id = e.id left outer join tour t on b.tour_id = t.id;";
 	private static String artistQuery = "select a.*, GROUP_CONCAT(g.name) as genres from artist a join artist_genres_genre agg on agg.genres_id = a.id join genre g on agg.genre_id = g.id group by a.id;";
 	
-	/*    Class Methods    */
-	// Default constructor
-	public PeopleDataSource(String url, String username, String password) {
+	public PrcseDataSource(String url, String username, String password) {
 		super();
 		this.url = url;
 		this.username = username;
 		this.password = password;
 	}
-	
-	public PeopleDataSource(Connection connection) {
+
+	public PrcseDataSource(Connection connection) {
 		super();
 		this.connection = connection;
 	}
-
-	// Set up and open connection
-	public void connect() throws SQLException{
+	
+	@Override
+	public void connect() throws Exception {
 		this.connection = DriverManager.getConnection(url, username, password);
 		changed();
 		System.out.println("Connection successfully opened.");
 	}
-	
-	// Close connection
-	public void disconnect() throws SQLException{
+
+	@Override
+	public void disconnect() throws Exception {
 		this.connection.close();
 		this.connection = null;
 		changed();
 		System.out.println("Connection returned to pool/closed.");
 	}
-	
-	// Insert a person
-	/* (non-Javadoc)
-	 * @see server.PeopleSource#insertPerson(java.lang.String)
-	 */
-	public Long insertPerson(String name) throws SQLException {
-		long result = 0;
-		
-		PreparedStatement stmt = this.connection.prepareStatement("insert into person (name) values (?)", Statement.RETURN_GENERATED_KEYS);
-		stmt.setString(1, name);
-		stmt.executeUpdate();
-		ResultSet rs = stmt.getGeneratedKeys();
-		if (rs.next()){
-			 result=rs.getLong(1);
-		}
-		rs.close();
-		stmt.close();
-		
-		return new Long(result);
-	}
-	
-	// Update a person
-	/* (non-Javadoc)
-	 * @see server.PeopleSource#updatePerson(model.Person)
-	 */
-	public void updatePerson(Person person) throws SQLException {
-		
-		PreparedStatement stmt = this.connection.prepareStatement("update person set name=? where id=?");
-		stmt.setString(1, person.getName());
-		stmt.setLong(2, person.getId());
-		stmt.executeUpdate();
-		stmt.close();
-		
-	}
-	
-	// Get a person
-	/* (non-Javadoc)
-	 * @see server.PeopleSource#getPerson(long)
-	 */
-	public Person getPerson(long id) throws SQLException {
-		
-		Person result = null;
-		
-		PreparedStatement stmt = this.connection.prepareStatement("select * from person where id=?");
-		stmt.setLong(1, id);
-		ResultSet rs = stmt.executeQuery();
-		if(rs.next()){
-			result = new Person(rs.getString("name"), rs.getLong("id"));
-		}
-		
-		rs.close();
-		stmt.close();
 
-		return result;
-	}
-	
-	// Delete a person
-	/* (non-Javadoc)
-	 * @see server.PeopleSource#deletePerson(model.Person)
-	 */
-	public void deletePerson(Person person) throws SQLException {
-		
-		PreparedStatement stmt = this.connection.prepareStatement("delete from person where id=?");
-		stmt.setLong(1, person.getId());
-		stmt.executeUpdate();
-		stmt.close();
-		
-	}
-	
-	// Get all people
-	/* (non-Javadoc)
-	 * @see server.PeopleSource#listPersons()
-	 */
-	public ArrayList listPersons() throws SQLException {
-		ArrayList result = new ArrayList();
-		
-		PreparedStatement stmt = this.connection.prepareStatement("select * from person");
-		
-		ResultSet rs = stmt.executeQuery();
-		
-		while (rs.next()){
-			Person p = new Person(rs.getString("name"), rs.getLong("id"));
-			result.add(p);
-		}
-		
-		rs.close();
-		stmt.close();
-		
-		return result;
-	}
-	
-	// Check for a connection
+	@Override
 	public boolean isConnected() {
 		return this.connection != null;
 	}
@@ -162,7 +65,8 @@ public class PeopleDataSource extends Observable implements PeopleSource {
 		clearChanged();
 	}
 
-	public ArrayList getFrontPage() throws Exception {
+	@Override
+	public ArrayList<Object> getFrontPage() throws Exception {
 		ArrayList result = new ArrayList();
 		HashMap<Long, Artist> artists = new HashMap<Long, Artist>();
 		HashMap<Long, Event> events = new HashMap<Long, Event>();
@@ -247,4 +151,5 @@ public class PeopleDataSource extends Observable implements PeopleSource {
 		
 		return result;
 	}
+
 }

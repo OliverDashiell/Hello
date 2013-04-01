@@ -46,4 +46,10 @@ public class GetPerson extends BaseRequest {
 		return false;
 	}
 
+	@Override
+	public boolean shouldSync() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
