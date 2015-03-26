@@ -22,7 +22,6 @@ public class ConnectionHandler extends Observable implements Runnable {
 	private ArrayList broadcastQueue;
 	private int clientId;
 	private String clientEmail;
-	//TODO set after login
 	private static int clientIdSeed = 0;
 	
 	public ConnectionHandler(Socket socket, DataSource dataSource){

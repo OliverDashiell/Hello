@@ -7,6 +7,9 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Observable;
 
+import com.prcse.protocol.CustomerBooking;
+import com.prcse.protocol.CustomerForm;
+import com.prcse.protocol.CustomerInfo;
 import com.prcse.protocol.FrontPage;
 import com.prcse.protocol.Request;
 
@@ -88,5 +91,38 @@ public class PeopleClient extends Observable implements PeopleSource {
 		out.writeObject(new FrontPage());
 		FrontPage response = (FrontPage)handleResponse();
 		return response.getArtists();
+	}
+
+	@Override
+	public CustomerInfo login(CustomerInfo request) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CustomerInfo syncCustomer(CustomerInfo request) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CustomerForm getCustomerFormData(CustomerForm request)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CustomerBooking createBooking(CustomerBooking request)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CustomerBooking cancelBooking(CustomerBooking request)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

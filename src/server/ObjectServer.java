@@ -42,7 +42,6 @@ public class ObjectServer {
 			handleClient();
 		}
 		while (true);
-		//TODO check rest of while true loop structure
 	}
 
 	private void handleClient() {

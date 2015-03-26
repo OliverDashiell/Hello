@@ -17,6 +17,9 @@ import com.prcse.datamodel.Event;
 import com.prcse.datamodel.SeatingPlan;
 import com.prcse.datamodel.Tour;
 import com.prcse.datamodel.Venue;
+import com.prcse.protocol.CustomerBooking;
+import com.prcse.protocol.CustomerForm;
+import com.prcse.protocol.CustomerInfo;
 
 import archive.Person;
 
@@ -180,8 +183,7 @@ public class PeopleDataSource extends Observable implements PeopleSource {
 									rs.getString("name"), 
 									rs.getString("bio"), 
 									rs.getString("genres"),
-									rs.getString("thumb_image"),
-									rs.getString("header_image"));
+									rs.getString("thumb_image"));
 			result.add(a);
 			artists.put(new Long(a.getId()), a);
 		}
@@ -246,5 +248,38 @@ public class PeopleDataSource extends Observable implements PeopleSource {
 		stmt.close();
 		
 		return result;
+	}
+
+	@Override
+	public CustomerInfo login(CustomerInfo request) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CustomerInfo syncCustomer(CustomerInfo request) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CustomerForm getCustomerFormData(CustomerForm request)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CustomerBooking createBooking(CustomerBooking request)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CustomerBooking cancelBooking(CustomerBooking request)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
